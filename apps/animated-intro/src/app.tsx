@@ -7,14 +7,14 @@ export function App() {
     setLoadedCount(loadedCount + 1);
   };
 
-  const images = [...Array(20)].map(
-    (_, i) => `https://picsum.photos/2000/1400//?random?${i}`
+  const images = [...Array(28)].map(
+    (_, i) => `https://picsum.photos/4000/1400//?random?${i}`
   );
 
   useEffect(() => {
     console.log("running effect");
 
-    if (loadedCount === 20) {
+    if (loadedCount === 28) {
       cover.current?.animate([{ opacity: 1 }, { opacity: 0 }], {
         duration: 250,
         fill: "forwards",
@@ -27,10 +27,10 @@ export function App() {
       ) as HTMLImageElement;
 
       container.animate(
-        [{ scale: 1 }, { scale: 5.5, transform: "translateY(-2.5vh)" }],
+        [{ scale: 1 }, { scale: 7.5, transform: "translateY(-2.5vh)" }],
         {
-          delay: 1300,
-          duration: 2200,
+          delay: 1400,
+          duration: 3000,
           fill: "forwards",
           easing: "cubic-bezier(.79,.01,.4,.99)",
         }
@@ -110,19 +110,10 @@ export function App() {
         className="absolute top-0 left-0 bg-neutral-900 z-10 w-screen h-screen flex justify-center items-center text-white"
         ref={cover}
       >
-        {(loadedCount * 100) / images.length}%
+        {Math.round((loadedCount * 100) / images.length)}%
       </div>
       <div className="flex flex-row gap-4 justify-between h-full img-container">
-        <div className="w-1/3 h-full">
-          {images.splice(0, 4).map((image) => (
-            <img
-              src={image}
-              className="mb-4 h-1/4 w-full object-cover object-center translate-y-[100vh] animate-on-load rounded-md"
-              onLoad={indicateLoaded}
-            />
-          ))}
-        </div>
-        <div className="w-1/3 reversed-pane">
+        <div className="w-1/5 reversed-pane">
           {images.splice(0, 4).map((image) => (
             <img
               src={image}
@@ -131,7 +122,25 @@ export function App() {
             />
           ))}
         </div>
-        <div className="w-1/3 main-pane">
+        <div className="w-1/5 h-full">
+          {images.splice(0, 4).map((image) => (
+            <img
+              src={image}
+              className="mb-4 h-1/4 w-full object-cover object-center translate-y-[100vh] animate-on-load rounded-md"
+              onLoad={indicateLoaded}
+            />
+          ))}
+        </div>
+        <div className="w-1/5 reversed-pane">
+          {images.splice(0, 4).map((image) => (
+            <img
+              src={image}
+              className="mb-4 h-1/4 w-full object-cover object-center translate-y-[-120vh] animate-on-load rounded-md"
+              onLoad={indicateLoaded}
+            />
+          ))}
+        </div>
+        <div className="w-1/5 main-pane">
           {/* main pane */}
           {images.splice(0, 4).map((image, i) => (
             <>
@@ -146,7 +155,7 @@ export function App() {
             </>
           ))}
         </div>
-        <div className="w-1/3 reversed-pane">
+        <div className="w-1/5 reversed-pane">
           {images.splice(0, 4).map((image) => (
             <img
               src={image}
@@ -154,12 +163,21 @@ export function App() {
               onLoad={indicateLoaded}
             />
           ))}
-        </div>{" "}
-        <div className="w-1/3">
+        </div>
+        <div className="w-1/5">
           {images.splice(0, 4).map((image) => (
             <img
               src={image}
               className="mb-4 h-1/4 w-full object-cover object-center translate-y-[100vh] animate-on-load rounded-md"
+              onLoad={indicateLoaded}
+            />
+          ))}
+        </div>
+        <div className="w-1/5 reversed-pane">
+          {images.splice(0, 4).map((image) => (
+            <img
+              src={image}
+              className="mb-4 h-1/4 w-full object-cover object-center translate-y-[-120vh] animate-on-load rounded-md"
               onLoad={indicateLoaded}
             />
           ))}
