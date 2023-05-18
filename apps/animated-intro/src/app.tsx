@@ -36,9 +36,9 @@ export function App() {
         }
       );
 
-      const mainPhoto = document.querySelector(
-        ".main-photo"
-      ) as HTMLImageElement;
+      // const mainPhoto = document.querySelector(
+      //   ".main-photo"
+      // ) as HTMLImageElement;
 
       // mainPhoto.animate([{ padding: 0 }, { padding: "4em" }], {
       //   delay: 1200,
